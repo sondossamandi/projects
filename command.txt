@@ -1,0 +1,31 @@
+$ cd ~/icecream
+Puis, réinitialisez Git de manière à pouvoir démarrer en utilisant des commandes Git à l’intérieur du répertoire. Le dossier est désormais un dépôt Git.
+
+$ git init
+Attendez, est-ce le bon fichier ? Voici comment vérifier et vous assurer que c’est bien l’endroit où vous avez stocké votre design :
+
+$ git status
+Et c’est ce que Git vous dira en retour :
+
+# Untracked files:
+# (use "git add ..." to include in what will be committed)
+#
+
+# chocolat.jpeg
+Ayé ils sont ici ! Ajoutez-les dans votre dépôt local Git pour qu’ils soient suivis par Git.
+
+$ git add chocolat.jpeg
+Maintenant, faites un “instantané” du dépôt tel qu’il est maintenant avec la commande commit :
+
+$ git commit -m "Ajoute chocolat.jpeg."
+Bravo ! Mais vos collègues, acharnés au boulot dans leurs propres dépôts locaux, ne peuvent pas voir votre tout nouveau design ! Ceci parce que le projet principal est stocké dans le compte Github de la société (nom d’utilisateur : 123WebDesign) dans le dépôt intitulé “icecream.”
+
+Parce que vous ne vous êtes pas encore connecté au dépôt GitHub, votre ordinateur ne sait même pas qu’il existe. Aussi, déclarez votre dépôt local :
+
+$ git remote add origin https://github.com/123WebDesign/icecream.git
+Et double-checkez pour vous assurer qu’il le connaît :
+
+$ git remote -v
+Pour finir, c’est le moment que vous attendiez. Téléversez ce délicieux sundae sur le projet :
+
+git push

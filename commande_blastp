@@ -1,0 +1,26 @@
+blastp -query Seq_CG4434_drosophila_altorf.fa -db Seq_Glud1_human_altorf.fa -task blastp -evalue 1e-03 -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen" -out ResBlast_drosophila_human_altorf.txt 
+
+
+formatdb -i HS_genbank_GRCh38_v1.2_reference_clean.fa -p T
+blastp -query Pan_troglodytes_clean.fa -db HS_genbank_GRCh38_v1.2_reference_clean.fa -task blastp -evalue 1e-05 -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen" -out ResBlast_chimpanzee_human_ref_coverage.txt
+
+
+
+blastp -query Saccharomyces_cerevisiae_altorf_filtered_clean.fa -db /home/samandi/CHUS/CONSERVATION_INPARANOID/human/HS_genbank_GRCh38_v1.4_altorf.fa -task blastp -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen" -out ResBlast_yeast_human.tsv
+
+
+blastp -query /home/samandi/CHUS/CONSERVATION_INPARANOID/human/HS_genbank_GRCh38_v1.4_altorf.fa -db Saccharomyces_cerevisiae_altorf_filtered_clean.fa -task blastp -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen" -out ResBlast_human_yeast.tsv
+
+
+blastp -query Btau_4.6.1_altorf_filtered_clean.fa -db /home/samandi/CHUS/CONSERVATION_INPARANOID/Mouse/mouse/Mm_genbank_GRCh38_altorf_ref.fa -task blastp -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen" -out ResBlast_bos_mouse.tsv
+
+
+blastp -query /home/samandi/CHUS/CONSERVATION_INPARANOID/Mouse/mouse/Mm_genbank_GRCh38_altorf_filtered_clean.fa -db Pan_troglodytes-2.1.4_altorf_ref.fa -task blastp -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen" -out ResBlast_mouse_chimp.tsv
+
+blastp -query Drosophila_melanogaster_altorf_filtered_clean.fa -db Drosophila_melanogaster_altorf_ref.fa -task blastp -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen" -out ResBlast_droso_droso.tsv
+
+sort -k1,1 -k12nr,12nr -k15nr,15nr ResBlast_chimp_human_ref_filtered_new.tsv > test_hum
+
+blastp -query HS_GRCh38_altorf_20170505.fa -db refseq_ensembl_uniprot.fa -task blastp -evalue 1e-05 -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen" -out ResBlast_control.tsv
+sort -k1,1 -k3nr,3nr -k15nr,15nr ResBlast_control.tsv > test.tsv
+
